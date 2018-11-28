@@ -9,13 +9,15 @@ package trabalhopaa02;
  *
  * @author andre
  */
-public class TrabalhoPAA02 {
+public class Principal {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        System.out.println("Hello World");
+        
     }
     
 }
