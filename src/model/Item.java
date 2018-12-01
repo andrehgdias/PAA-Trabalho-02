@@ -6,6 +6,7 @@
 package model;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -61,5 +62,23 @@ public class Item{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
+    /*
+    Essa função é um Bubble Sort que ordena um ArrayList de itens decrescentemente em 
+    relação ao valor, ou seja, os itens de maior valor ficam no início do ArrayList
+    */
+    public static void ordenarPorValor(ArrayList<Item> itens){
+        for (int i = 0; i < itens.size() - 1; i++) {
+            Item item1 = itens.get(i);
+            for (int j = i + 1; j < itens.size(); j++) {
+                Item item2 = itens.get(j);
+                if (item1.getValor() < item2.getValor()) { //ordem decrescente
+                    Item aux = item1;
+                    itens.set(i, item2);
+                    itens.set(j, aux);
+                }
+            }
+        }
+    }
+    
 }

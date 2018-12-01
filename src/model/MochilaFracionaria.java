@@ -13,9 +13,7 @@ import java.util.ArrayList;
  * @author User
  */
 public class MochilaFracionaria {
-    
 
-    
     private ArrayList<Item> itens;
     
     /*

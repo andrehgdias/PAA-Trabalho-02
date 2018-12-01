@@ -18,12 +18,12 @@ public class Principal {
         ArrayList<Item> itens = new ArrayList<>();
         
         itens.add(item1);
-        itens.add(item2);
         itens.add(item3);
         itens.add(item4);
+        itens.add(item2);
         
+        Item.ordenarPorValor(itens);
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 50);
-        
         MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
         
         
