@@ -41,8 +41,22 @@ public class Principal {
 //        matriz[3][1] = 9;
 //        matriz[3][2] = 14;
 //        matriz[3][3] = 10;
+        int solucao[] = {-1,-1,-1,-1};
+        int solucaoTemporaria[] = {-1,-1,-1,-1};
         
-        AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4);
+        int melhorSolucao = Integer.MAX_VALUE, solucaoAtual = 0;
+        
+        for(int i=0; i < 4; i++){
+            boolean resposta = false; 
+            if(i == 0)resposta = true;
+            
+            for(int k=0; k < 4; k++) solucaoTemporaria[k] = -1;
+            AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4, i, 0, solucao, solucaoTemporaria, resposta, melhorSolucao, solucaoAtual);
+            
+            for(int j=0; j < 4; j++) System.out.println(solucaoTemporaria[j]);
+            for(int j=0; j < 4; j++) System.out.println(solucao[j]);
+        }
+        
     }
     
 }
