@@ -1,43 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalhopaa02;
 
+import java.util.ArrayList;
 import model.AssociacaoTarefas;
+import model.Item;
+import model.MochilaFracionaria;
 
-/**
- *
- * @author andre
- */
 public class Principal {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
-        int matriz[][] = new int[4][4];
+        Item item1 = new Item("Item 1", 40, 840, 1);
+        Item item2 = new Item("Item 2", 30, 600, 1);
+        Item item3 = new Item("Item 3", 20, 400, 1);
+        Item item4 = new Item("Item 4", 10, 100, 1);
         
-        matriz[0][0] = 5;
-        matriz[0][1] = 5;
-        matriz[0][2] = 6;
-        matriz[0][3] = 9;
-        matriz[1][0] = 3;
-        matriz[1][1] = 1;
-        matriz[1][2] = 4;
-        matriz[1][3] = 4;
-        matriz[2][0] = 3;
-        matriz[2][1] = 5;
-        matriz[2][2] = 13;
-        matriz[2][3] = 3;
-        matriz[3][0] = 3;
-        matriz[3][1] = 9;
-        matriz[3][2] = 14;
-        matriz[3][3] = 10;
+        ArrayList<Item> solucao;
+        ArrayList<Item> itens = new ArrayList<>();
         
-        AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4);
+        itens.add(item1);
+        itens.add(item2);
+        itens.add(item3);
+        itens.add(item4);
+        
+        solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 50);
+        
+        MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
+        
+        
+//        int matriz[][] = new int[4][4];
+//        
+//        matriz[0][0] = 5;
+//        matriz[0][1] = 5;
+//        matriz[0][2] = 6;
+//        matriz[0][3] = 9;
+//        matriz[1][0] = 3;
+//        matriz[1][1] = 1;
+//        matriz[1][2] = 4;
+//        matriz[1][3] = 4;
+//        matriz[2][0] = 3;
+//        matriz[2][1] = 5;
+//        matriz[2][2] = 13;
+//        matriz[2][3] = 3;
+//        matriz[3][0] = 3;
+//        matriz[3][1] = 9;
+//        matriz[3][2] = 14;
+//        matriz[3][3] = 10;
+//        
+//        AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4);
     }
     
 }
