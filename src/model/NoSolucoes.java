@@ -10,8 +10,8 @@ package model;
  * @author andre
  */
 public class NoSolucoes {
-    int somaSolucaoAtual;
-    int melhorSolucao;
+    private int somaSolucaoAtual;
+    private int melhorSolucao;
     
     int vetorSolucao[] = new int[4];
     int vetorSolucaoTemporaria[] = new int[4];
@@ -28,7 +28,7 @@ public class NoSolucoes {
         return somaSolucaoAtual;
     }
 
-    public void setSolucaoAtual(int somaSolucaoAtual) {
+    public void setSomaSolucaoAtual(int somaSolucaoAtual) {
         this.somaSolucaoAtual = somaSolucaoAtual;
     }
 

@@ -10,77 +10,78 @@ package model;
  * @author User
  */
 public class AssociacaoTarefas {
-    
-    public static boolean validar(int vetor[], int pessoasDesignadas, int solucaoAtual, int melhorSolucao){
-        int i, candidato = vetor[pessoasDesignadas - 1];
-        
-        if(solucaoAtual > melhorSolucao)
-            return false;
-        
-        for(i = 0; i < pessoasDesignadas - 1; i++)
-            if(vetor[i] == candidato)
-                return false;
-        
-        return true;
-    }
-    
-    public static int checarConflito(int solucaoTemp[], int linhaCandidato, int melhorSolucao, int solucaoAtual, int valor){
-        if(solucaoAtual > melhorSolucao){
-            solucaoAtual -= valor;
-            return solucaoAtual;
-        }
-        for(int i = 0; i < solucaoTemp.length; i++)
-            if(solucaoTemp[i] == linhaCandidato){
-                solucaoAtual -= valor;
-                return solucaoAtual;
-            }                
-        
-        return solucaoAtual;
-    }       
-            
-    public static boolean resolverAssociacaoDeTarefas(int matriz[][], int linhas, int colunas, int linhaInicio, int colunaInicio, int solucao[], int solucaoTemp[], boolean primeirasolucao, int melhorSolucao, int solucaoAtual){
-            
-        if(colunaInicio == colunas){
-            //Verifica a solução
-            return true; // encontrou uma solução
-        }
-        int pularLinha = 0;
-        if(!primeirasolucao) pularLinha = linhaInicio;
-        
-        boolean sol;
 
-        for (int i=pularLinha; i<linhas; i++) {
-            int aux = solucaoAtual += matriz[i][colunaInicio];
-            if(aux == (solucaoAtual = checarConflito(solucaoTemp, i, melhorSolucao, solucaoAtual, matriz[i][colunaInicio]))){ //  //true = sem conflitos, continua
-                solucaoTemp[colunaInicio] = i;
-      
-                sol = resolverAssociacaoDeTarefas(matriz, linhas, colunas, 0, colunaInicio + 1, solucao, solucaoTemp, false, melhorSolucao, solucaoAtual);
-                
-                if(i == linhas - 1){
-                    
-                    if(sol){
-                        if(melhorSolucao > solucaoAtual){
-                            System.arraycopy(solucaoTemp, 0, solucao, 0, solucaoTemp.length);
-                            melhorSolucao = solucaoAtual;
-                        }
-                        solucaoTemp[colunaInicio] = -1;
-                        return true;
-                    } //Encontrou uma solução
-                    else{
-                        solucaoTemp[colunaInicio] = -1;
-                        solucaoAtual -= matriz[i][colunaInicio];
-                    }
-                }else{
-                    solucaoTemp[colunaInicio] = -1;
-                    solucaoAtual -= matriz[i][colunaInicio];
-                }
+    public static boolean validar(int vetor[], int pessoasDesignadas, int solucaoAtual, int melhorSolucao) {
+        int i, candidato = vetor[pessoasDesignadas - 1];
+
+        if (solucaoAtual > melhorSolucao) {
+            return false;
+        }
+
+        for (i = 0; i < pessoasDesignadas - 1; i++) {
+            if (vetor[i] == candidato) {
+                return false;
             }
         }
-        
+
+        return true;
+    }
+
+    public static boolean checarConflito(int linhaCandidato, int valor, NoSolucoes objSolucao) {
+        if (objSolucao.getSomaSolucaoAtual() > objSolucao.getMelhorSolucao()) {
+            objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() - valor);
+            return false;
+        }
+        for (int i = 0; i < objSolucao.getVetorSolucaoTemporaria().length; i++) {
+            if (objSolucao.getVetorSolucaoTemporaria()[i] == linhaCandidato) {
+                objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() - valor);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static boolean resolverAssociacaoDeTarefas(int matriz[][], int linhas, int colunas, int linhaInicio, int colunaInicio, NoSolucoes objSolucao, boolean primeirasolucao) { //int solucao[], int solucaoTemp[], boolean primeirasolucao, int melhorSolucao, int solucaoAtual
+
+        if (colunaInicio == colunas) {
+            return true; // encontrou uma solução
+        }
+       
+
+        boolean sol;
+
+        for (int i = 0; i < linhas; i++) {
+            objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() + matriz[i][colunaInicio]);
+            if (checarConflito(i, matriz[i][colunaInicio], objSolucao)) { //  //true = sem conflitos, continua
+
+                objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = i;
+
+                sol = resolverAssociacaoDeTarefas(matriz, linhas, colunas, 0, colunaInicio + 1, objSolucao, false);
+
+                if (sol && colunaInicio == colunas-1) {
+                    if (objSolucao.getMelhorSolucao() > objSolucao.getSomaSolucaoAtual()) {
+                        System.arraycopy(objSolucao.getVetorSolucaoTemporaria(), 0, objSolucao.getVetorSolucao(), 0, objSolucao.getVetorSolucaoTemporaria().length);
+                        objSolucao.setMelhorSolucao(objSolucao.getSomaSolucaoAtual());
+                        objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = -1;
+                        objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() - matriz[i][colunaInicio]);
+                        return true;
+                    }else{
+                        objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = -1;
+                        objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() - matriz[i][colunaInicio]);
+                        return false;
+                    }  
+                } else {
+                    objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = -1;
+                    objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() - matriz[i][colunaInicio]);
+                }
+            } else {
+                objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = -1;
+            }
+        }
+
         return false;
-        
-        
-        
+
 //        int i, j = 0;
 //        int vetor[] = new int[colunas];
 //        int vetorSolucao[];
@@ -117,7 +118,6 @@ public class AssociacaoTarefas {
 //        for(i = 0; i < colunas; i++){
 //            System.out.println("\n" + vetorSolucao[i]);
 //        }
-        
     }
-    
+
 }
