@@ -21,18 +21,18 @@ public class Principal {
         {11, 17, 19, 23},
         {17, 14, 20, 28}};
 
-        NoSolucoes solucao = new NoSolucoes();
+        NoSolucoes solucaoEx1 = new NoSolucoes();
 
         for (int k = 0; k < 4; k++) {
-            solucao.getVetorSolucaoTemporaria()[k] = -1;
+            solucaoEx1.getVetorSolucaoTemporaria()[k] = -1;
         }
-        AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4, 0, 0, solucao, true);//solucao.getVetorSolucao(), olucao.getVetorSolucaoTemporaria(), resposta, solucao.getMelhorSolucao(), solucao.getSomaSolucaoAtual());
+        AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4, 0, 0, solucaoEx1, true);//solucao.getVetorSolucao(), olucao.getVetorSolucaoTemporaria(), resposta, solucao.getMelhorSolucao(), solucao.getSomaSolucaoAtual());
 
         for (int j = 0; j < 4; j++) {
-            System.out.println(solucao.getVetorSolucaoTemporaria()[j]);
+            System.out.println(solucaoEx1.getVetorSolucaoTemporaria()[j]);
         }
         for (int j = 0; j < 4; j++) {
-            System.out.println(solucao.getVetorSolucao()[j]);
+            System.out.println(solucaoEx1.getVetorSolucao()[j]);
         }
 
         Item item1 = new Item("Item 1", 40, 840, 1);
