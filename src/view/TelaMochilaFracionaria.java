@@ -277,7 +277,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         
             Item item = new Item(nome, peso, valor, 1);
 
-            itens.add(item);
+            this.itens.add(item);
 
             Object linha[] = new Object[3];
             linha[0] = nome;
@@ -302,7 +302,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         
         if(valido){
             String solucao;
-            solucao = Controlador.mochilaFracionaria(itens, capacidade);
+            solucao = Controlador.mochilaFracionaria(this.itens, capacidade);
             solucaoTextArea.setText(solucao);
         }
         else JOptionPane.showMessageDialog(null, "Insira pelo menos um item", "Erro", JOptionPane.ERROR_MESSAGE);

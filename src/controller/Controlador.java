@@ -17,8 +17,9 @@ public class Controlador {
     
     public static String mochilaFracionaria(ArrayList<Item> itens, double capacidade){
         ArrayList<Item> solucao;
-
+        
         Item.ordenarPorValor(itens);
+        
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, capacidade);
         return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
     }

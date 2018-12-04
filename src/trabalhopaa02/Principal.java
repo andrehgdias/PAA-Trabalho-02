@@ -13,10 +13,11 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        int matriz[][] = {{11, 12, 18, 40}, //Matriz 4x4 -> Linha = Pessoa, Coluna = Tarefa
+        /*********************************** ASSOCIAÇÃO DE TAREFAS ****************************************/
+        int matriz[][] = {  {11, 12, 18, 40}, //Matriz 4x4 -> Linha = Pessoa, Coluna = Tarefa
                             {14, 15, 13, 22},
-        {11, 17, 19, 23},
-        {17, 14, 20, 28}};
+                            {11, 17, 19, 23},
+                            {17, 14, 20, 28}};
 
         NoSolucoes solucaoEx1 = new NoSolucoes();
 
@@ -31,25 +32,22 @@ public class Principal {
         }
 
         /************************************ MOCHILA FRACIONARIA *****************************************/
-        Item item1 = new Item("Item 1", 40, 840, 1);
-        Item item2 = new Item("Item 2", 30, 600, 1);
-        Item item3 = new Item("Item 3", 20, 400, 1);
-        Item item4 = new Item("Item 4", 10, 100, 1);
+        Item item1 = new Item("Item 1", 5, 10, 1); //(nome, peso, valor, quantidade)
+        Item item2 = new Item("Item 2", 1, 50, 1);
+        Item item3 = new Item("Item 3", 3, 14, 1);
 
         ArrayList<Item> solucao;
         ArrayList<Item> itens = new ArrayList<>();
 
         itens.add(item1);
-        itens.add(item3);
-        itens.add(item4);
         itens.add(item2);
+        itens.add(item3);
 
         Item.ordenarPorValor(itens);
-        solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 50);
-        MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
+        solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 2);
+        System.out.println(MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao));
 
-        /*************************************************************************************************/
-        
+        /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/
 
         int m = 8;	//comprimento de X
         int n = 7;	//comprimento de Y
@@ -88,6 +86,8 @@ public class Principal {
         
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
+    /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/ 
+ 
     }
 
 }
