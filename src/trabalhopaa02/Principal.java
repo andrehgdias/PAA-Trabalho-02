@@ -7,6 +7,8 @@ import model.NoSolucoes;
 import model.Item;
 import model.MochilaFracionaria;
 
+import model.SubsequenciaMaisLonga;
+
 public class Principal {
 
     public static void main(String[] args) {
@@ -72,6 +74,45 @@ public class Principal {
 //        matriz[3][3] = 10;
 //        
 //        AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4);
+
+
+        int m = 8;	//comprimento de X
+        int n = 7;	//comprimento de Y
+        
+        char X[] = new char[m];
+        char Y[] = new char[n];
+        
+        X[0] = '\0';
+        X[1] = 'A';
+        X[2] = 'A';
+        X[3] = 'B';
+        X[4] = 'B';
+        X[5] = 'A';
+        X[6] = 'A';
+        X[7] = 'A';
+        
+        Y[0] = '\0';
+        Y[1] = 'A';
+        Y[2] = 'A';
+        Y[3] = 'A';
+        Y[4] = 'A';
+        Y[5] = 'A';
+        Y[6] = 'A';
+        
+        char B[][] = new char[X.length][Y.length];
+        int C[][] = new int[X.length][Y.length];
+        
+        int i = 0;
+        int j = 0;
+        int armazenaIeJ[] = new int[2]; //armazena os valores de i e j alterados no primeiro método para serem utilizados no segundo método
+        
+        SubsequenciaMaisLonga.constroiTabelas(X, Y, B, C, i, j, armazenaIeJ);
+
+        i = armazenaIeJ[0];
+        j = armazenaIeJ[1];
+        
+        SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
+
     }
 
 }
