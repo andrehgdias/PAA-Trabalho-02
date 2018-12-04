@@ -15,14 +15,14 @@ import model.Item;
  *
  * @author User
  */
-public class TelaMochila extends javax.swing.JFrame {
+public class TelaMochilaFracionaria extends javax.swing.JFrame {
 
     private boolean valido;
     private double capacidade = 0;
     private ArrayList<Item> itens = new ArrayList<>();
     private final DefaultTableModel modeloTabela;
     
-    public TelaMochila() {
+    public TelaMochilaFracionaria() {
         initComponents();
         this.modeloTabela = (DefaultTableModel) tabela.getModel();
         valido = false;
@@ -188,6 +188,7 @@ public class TelaMochila extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Solução"));
 
+        solucaoTextArea.setEditable(false);
         solucaoTextArea.setColumns(20);
         solucaoTextArea.setRows(5);
         jScrollPane2.setViewportView(solucaoTextArea);
@@ -346,20 +347,21 @@ public class TelaMochila extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaMochila().setVisible(true);
+                new TelaMochilaFracionaria().setVisible(true);
             }
         });
     }
