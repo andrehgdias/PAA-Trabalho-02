@@ -34,8 +34,6 @@
                   <Component id="jScrollPane1" alignment="0" pref="494" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="sairButton" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="resolverButton" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -55,10 +53,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel3" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="resolverButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="sairButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="resolverButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -191,11 +186,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="capacidadeTextField" min="-2" pref="70" max="-2" attributes="0"/>
-                  <EmptySpace pref="222" max="32767" attributes="0"/>
+                  <Component id="capacidadeTextField" min="-2" pref="82" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -203,12 +198,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="capacidadeTextField" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="capacidadeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -250,7 +244,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="146" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="138" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -266,6 +260,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="solucaoTextArea">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -280,14 +275,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resolverButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="sairButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sair"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sairButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

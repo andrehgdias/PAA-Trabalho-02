@@ -15,14 +15,14 @@ import model.Item;
  *
  * @author User
  */
-public class TelaMochila extends javax.swing.JFrame {
+public class TelaMochilaFracionaria extends javax.swing.JFrame {
 
     private boolean valido;
     private double capacidade = 0;
     private ArrayList<Item> itens = new ArrayList<>();
     private final DefaultTableModel modeloTabela;
     
-    public TelaMochila() {
+    public TelaMochilaFracionaria() {
         initComponents();
         this.modeloTabela = (DefaultTableModel) tabela.getModel();
         valido = false;
@@ -55,7 +55,6 @@ public class TelaMochila extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         solucaoTextArea = new javax.swing.JTextArea();
         resolverButton = new javax.swing.JButton();
-        sairButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mochila Fracionária");
@@ -171,25 +170,25 @@ public class TelaMochila extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(capacidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addComponent(capacidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(capacidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(capacidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Solução"));
 
+        solucaoTextArea.setEditable(false);
         solucaoTextArea.setColumns(20);
         solucaoTextArea.setRows(5);
         jScrollPane2.setViewportView(solucaoTextArea);
@@ -207,7 +206,7 @@ public class TelaMochila extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -215,13 +214,6 @@ public class TelaMochila extends javax.swing.JFrame {
         resolverButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resolverButtonActionPerformed(evt);
-            }
-        });
-
-        sairButton.setText("Sair");
-        sairButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairButtonActionPerformed(evt);
             }
         });
 
@@ -238,8 +230,6 @@ public class TelaMochila extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(sairButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(resolverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -255,9 +245,7 @@ public class TelaMochila extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resolverButton)
-                    .addComponent(sairButton))
+                .addComponent(resolverButton)
                 .addContainerGap())
         );
 
@@ -342,11 +330,6 @@ public class TelaMochila extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_capacidadeTextFieldFocusLost
 
-    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_sairButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -364,20 +347,21 @@ public class TelaMochila extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaMochila.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaMochila().setVisible(true);
+                new TelaMochilaFracionaria().setVisible(true);
             }
         });
     }
@@ -397,7 +381,6 @@ public class TelaMochila extends javax.swing.JFrame {
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField pesoTextField;
     private javax.swing.JButton resolverButton;
-    private javax.swing.JButton sairButton;
     private javax.swing.JTextArea solucaoTextArea;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField valorTextField;
