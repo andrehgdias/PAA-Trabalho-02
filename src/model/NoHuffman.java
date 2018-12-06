@@ -14,8 +14,26 @@ public class NoHuffman {
     private char caractere;
     private int frequencia;
     private NoHuffman esq;
+
+    public NoHuffman getProx() {
+        return prox;
+    }
+
+    public void setProx(NoHuffman prox) {
+        this.prox = prox;
+    }
     private NoHuffman dir;
     private NoHuffman pai;
+    private NoHuffman prox;
+    
+    public NoHuffman(char caractere, int frequencia){
+        this.caractere = caractere;
+        this.frequencia = frequencia;
+        this.esq = null;
+        this.dir = null;
+        this.pai = null;
+        this.prox = null;
+    }
 
     public NoHuffman getEsq() {
         return esq;

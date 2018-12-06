@@ -2,10 +2,12 @@ package trabalhopaa02;
 
 import java.util.ArrayList;
 import model.AssociacaoTarefas;
+import model.FilaPrioridade;
 
 import model.NoSolucoes;
 import model.Item;
 import model.MochilaFracionaria;
+import model.NoHuffman;
 
 import model.SubsequenciaMaisLonga;
 
@@ -13,7 +15,7 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        /*********************************** ASSOCIAÇÃO DE TAREFAS ****************************************/
+        /*********************************** ASSOCIAÇÃO DE TAREFAS ****************************************
         int matriz[][] = {  {11, 12, 18, 40}, //Matriz 4x4 -> Linha = Pessoa, Coluna = Tarefa
                             {14, 15, 13, 22},
                             {11, 17, 19, 23},
@@ -31,7 +33,7 @@ public class Principal {
             System.out.println(solucaoEx1.getVetorSolucao()[j]);
         }
 
-        /************************************ MOCHILA FRACIONARIA *****************************************/
+        /************************************ MOCHILA FRACIONARIA *****************************************
         Item item1 = new Item("Item 1", 5, 10, 1); //(nome, peso, valor, quantidade)
         Item item2 = new Item("Item 2", 1, 50, 1);
         Item item3 = new Item("Item 3", 3, 14, 1);
@@ -47,7 +49,7 @@ public class Principal {
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 2);
         System.out.println(MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao));
 
-        /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/
+        /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************
 
         int m = 8;	//comprimento de X
         int n = 7;	//comprimento de Y
@@ -87,6 +89,18 @@ public class Principal {
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
     /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/ 
+        
+        FilaPrioridade fila = new FilaPrioridade();
+        NoHuffman no1 = new NoHuffman('a', 20);
+        NoHuffman no3 = new NoHuffman('c', 21);
+        NoHuffman no2 = new NoHuffman('b', 23);
+        
+        NoHuffman no4 = new NoHuffman('d', 19);
+        fila.addNo(no1);
+        fila.addNo(no2);
+        fila.addNo(no3);
+        fila.addNo(no4);
+        fila.exibir();
  
     }
 
