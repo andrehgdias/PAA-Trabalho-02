@@ -11,8 +11,8 @@ public class NoSolucoes {
     int vetorSolucao[] = new int[4];
     int vetorSolucaoTemporaria[] = new int[4];
 
-    public NoSolucoes() {
-        for(int i=0; i<4; i++)
+    public NoSolucoes(int numTarefas) {
+        for(int i=0; i<numTarefas; i++)
             this.vetorSolucao[i] = this.vetorSolucaoTemporaria[i] = -1;
         
         this.melhorSolucao = Integer.MAX_VALUE;

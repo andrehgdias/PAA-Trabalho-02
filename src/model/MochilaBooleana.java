@@ -43,7 +43,7 @@ public class MochilaBooleana {
             }
         }
         
-        //encontrando a solução]
+        //encontrando a solução
         i = linhas - 1;
         j = colunas - 1;
         int maxValor = tabela[i][j];

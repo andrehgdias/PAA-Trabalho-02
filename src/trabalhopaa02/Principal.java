@@ -17,13 +17,14 @@ public class Principal {
     public static void main(String[] args) {
 
         /*********************************** ASSOCIAÇÃO DE TAREFAS ****************************************
-        int matriz[][] = {  {11, 12, 18, 40}, //Matriz 4x4 -> Linha = Pessoa, Coluna = Tarefa
-                            {14, 15, 13, 22},
-                            {11, 17, 19, 23},
-                            {17, 14, 20, 28}};
 
-        NoSolucoes solucaoEx1 = new NoSolucoes();
+        int matriz[][] = {{11, 12, 18, 40}, //Matriz 4x4 -> Linha = Pessoa, Coluna = Tarefa
+                          {14, 15, 13, 22},
+                          {11, 17, 19, 23},
+                          {17, 14, 20, 28}};
 
+        NoSolucoes solucaoEx1 = new NoSolucoes(4);
+        
         for (int k = 0; k < 4; k++) {
             solucaoEx1.getVetorSolucaoTemporaria()[k] = -1;
         }
