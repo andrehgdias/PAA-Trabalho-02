@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MochilaBooleana {
     
-    public static void resolverMochilaBooleana(ArrayList<Item> itens, int capacidade){ //capacidade deve ser inteira
+    public static String resolverMochilaBooleana(ArrayList<Item> itens, int capacidade){ //capacidade deve ser inteira
         ArrayList<Item> solucao = new ArrayList<>();
         
         int linhas = itens.size() + 1;
@@ -47,6 +47,7 @@ public class MochilaBooleana {
         i = linhas - 1;
         j = colunas - 1;
         int maxValor = tabela[i][j];
+        String textoSolucao = "";
         
         while(i > 0){
             if(tabela[i - 1][j] != tabela[i][j]){
@@ -57,10 +58,13 @@ public class MochilaBooleana {
             else i--;
         }
         
-        System.out.println("O valor máximo da mochila é: " + maxValor);
+        textoSolucao += "Capacidade da mochila: " + capacidade + " kg\n" +
+                        "O valor máximo da mochila é: R$" + maxValor + ",00\n\n" +
+                        "Itens da solução:\n";
         for(i = 0; i < solucao.size(); i++)
-            System.out.println(solucao.get(i).getNome());
-        
+            textoSolucao += "- " + (solucao.get(i).getNome()) + "\n";
+                            
+        return textoSolucao;
     }
     
 }
