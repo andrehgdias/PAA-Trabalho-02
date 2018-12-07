@@ -6,6 +6,7 @@ import model.FilaPrioridade;
 
 import model.NoSolucoes;
 import model.Item;
+import model.MochilaBooleana;
 import model.MochilaFracionaria;
 import model.NoHuffman;
 
@@ -88,7 +89,7 @@ public class Principal {
         
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
-    /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/ 
+    /************************************ SUBSEQUÊNCIA MÁXIMA **************************************** 
         
         FilaPrioridade fila = new FilaPrioridade();
         NoHuffman no1 = new NoHuffman('a', 20);
@@ -101,7 +102,19 @@ public class Principal {
         fila.addNo(no3);
         fila.addNo(no4);
         fila.exibir();
- 
+        
+    /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/
+        
+        Item item1 = new Item("Item 1", 2, 3, 1); //(nome, peso, valor, quantidade)
+        Item item2 = new Item("Item 2", 3, 6, 1);
+        Item item3 = new Item("Item 3", 6, 9, 1);
+        
+        ArrayList<Item> itens = new ArrayList<>();
+        itens.add(item1);
+        itens.add(item2);
+        itens.add(item3);
+        
+        MochilaBooleana.resolverMochilaBooleana(itens, 10);
     }
 
 }
