@@ -31,6 +31,7 @@ public class AssociacaoTarefas {
         if (colunaInicio == colunas) {
             return true; // encontrou uma solução
         }
+        
         int pularLinha = 0;
         if (!primeirasolucao) {
             pularLinha = linhaInicio;
@@ -62,12 +63,8 @@ public class AssociacaoTarefas {
                     objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = -1;
                     objSolucao.setSomaSolucaoAtual(objSolucao.getSomaSolucaoAtual() - matriz[i][colunaInicio]);
                 }
-            } else {
-                objSolucao.getVetorSolucaoTemporaria()[colunaInicio] = -1;
             }
         }
-
         return false;
-
     }
 }

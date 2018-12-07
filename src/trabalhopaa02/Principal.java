@@ -23,7 +23,7 @@ public class Principal {
         {11, 17, 19, 23},
         {17, 14, 20, 28}};
 
-        NoSolucoes solucaoEx1 = new NoSolucoes();
+        NoSolucoes solucaoEx1 = new NoSolucoes(4);
 
         for (int k = 0; k < 4; k++) {
             solucaoEx1.getVetorSolucaoTemporaria()[k] = -1;
