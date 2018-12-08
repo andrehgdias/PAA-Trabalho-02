@@ -90,7 +90,7 @@ public class Principal {
         
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
-    /************************************ SUBSEQUÊNCIA MÁXIMA **************************************** 
+    /************************************** CÓDIGO DE HUFFMAN ****************************************** 
         
         FilaPrioridade fila = new FilaPrioridade();
         NoHuffman no1 = new NoHuffman('a', 20);
@@ -104,7 +104,7 @@ public class Principal {
         fila.addNo(no4);
         fila.exibir();
         
-    /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/
+    /************************************** MOCHILA BOOLEANA ******************************************/
         
         Item item1 = new Item("Item 1", 2, 3, 1); //(nome, peso, valor, quantidade)
         Item item2 = new Item("Item 2", 3, 6, 1);

@@ -51,12 +51,12 @@ public class MochilaFracionaria {
         DecimalFormat df = new DecimalFormat("0.00");
         
         txt += "Capacidade da mochila: " + df.format(capacidade) + " kg\n" +
-               "Itens da solução:\n\n";
+               "Itens da solução:\n";
         
         for(int i = 0; i < itens.size(); i++){
             txt += "- " + itens.get(i).getNome() + "\n" +
                    "Quantidade: " + itens.get(i).getQuantidadeFormatada()+ "\n\n";
-            valorAgregado += itens.get(i).getQuantidade() * itens.get(i).getValor();
+                    valorAgregado += itens.get(i).getQuantidade() * itens.get(i).getValor();
         }
         
         txt += "O valor total da mochila é de R$" + df.format(valorAgregado);

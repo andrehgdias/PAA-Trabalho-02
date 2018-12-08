@@ -28,10 +28,10 @@ public class MochilaBooleana {
             tabela[0][i] = 0;
         
         //montando a tabela
-        for(i = 1; i < linhas; i++){                //verificar se é só < ou <=
+        for(i = 1; i < linhas; i++){                
             for(j = 1; j < colunas; j++){
                 if(itens.get(i - 1).getPeso() <= j){ //item cabe
-                    int pos = j - (int)itens.get(i - 1).getPeso();      //na interface, só aceitar valor inteiro
+                    int pos = j - (int)itens.get(i - 1).getPeso();      
                     tabela[i][j] = tabela[i - 1][pos] + (int) itens.get(i - 1).getValor();
                 }
                 else{ //item não cabe
