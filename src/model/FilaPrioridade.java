@@ -5,8 +5,6 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author User
@@ -15,10 +13,12 @@ public class FilaPrioridade {
  
     private NoHuffman inicio;
     private NoHuffman fim;
+    private int cont;
 
     public FilaPrioridade(){
         this.inicio = null;
         this.fim = null;
+        this.cont = 0;
     }
 
     public NoHuffman getInicio() {
@@ -37,12 +37,21 @@ public class FilaPrioridade {
         this.fim = fim;
     }
 
+    public int getCont() {
+        return cont;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
+    
     /*
     Essa função insere um nó na lista encadeada baseado em sua frequência, sendo que os nós com menores
     frequências ficam no começo da lista, ou seja, a frequência é crescente
     */
     public void addNo(NoHuffman novoNo){
         NoHuffman anterior = null, atual;
+        this.cont++;
         
         if(this.inicio == null){ //fila vazia
             this.inicio = novoNo;
@@ -65,7 +74,6 @@ public class FilaPrioridade {
             else{ //inserção entre dois elementos
                 anterior.setProx(novoNo);
                 novoNo.setProx(atual);
-                //this.fim = atual;
             }
         }
     }
@@ -80,6 +88,20 @@ public class FilaPrioridade {
             no = no.getProx();
             if(no != null)  System.out.println("PROX: " + no.getFrequencia());
             else System.out.println("PROX: null");
+        }
+    }
+    
+    /*
+    Essa função remove sempre o nó que está no início da fila, retornando o mesmo ou null caso a lista esteja vazia
+    */
+    public NoHuffman removerNo(){
+        if(this.inicio == null)
+            return null;
+        else{
+            NoHuffman no = this.inicio;
+            this.inicio = no.getProx();
+            this.cont--;
+            return no;
         }
     }
     

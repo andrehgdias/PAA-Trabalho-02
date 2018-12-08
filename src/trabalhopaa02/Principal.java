@@ -3,6 +3,7 @@ package trabalhopaa02;
 import java.util.ArrayList;
 import model.AssociacaoTarefas;
 import model.FilaPrioridade;
+import model.HuffmanCompressao;
 
 import model.NoSolucoes;
 import model.Item;
@@ -103,9 +104,11 @@ public class Principal {
         fila.addNo(no3);
         fila.addNo(no4);
         
-        System.out.println("Início: " + fila.getInicio().getCaractere());
-        System.out.println("Fim: " + fila.getFim().getCaractere());
-        fila.exibir();
+        //fila.exibir();
+        
+        String txt = "fffffeeeeeeeeeccccccccccccbbbbbbbbbbbbbddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        HuffmanCompressao huffman = new HuffmanCompressao();
+        huffman.resolverHuffmanCompressao(txt);
         
     /************************************** MOCHILA BOOLEANA ******************************************
         
