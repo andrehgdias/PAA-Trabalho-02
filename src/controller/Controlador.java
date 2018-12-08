@@ -21,11 +21,12 @@ public class Controlador {
     
     public static String mochilaFracionaria(ArrayList<Item> itens, double capacidade){
         ArrayList<Item> solucao;
+        double copiaCapacidadeMochila = capacidade;
         
         Item.ordenarPorValor(itens);
         
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, capacidade);
-        return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
+        return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao, copiaCapacidadeMochila);
     }
     
     public static void associacaoDeTarefas(int matrizDoProblema[][], int numPessoas, int numTarefas){

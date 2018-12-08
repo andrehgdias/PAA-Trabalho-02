@@ -333,6 +333,7 @@ public class TelaMochilaBooleana extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             capacidade = Integer.parseInt(capacidadeTextField.getText());
+            valido_capacidade = false;
             if(capacidade < 0){
                 JOptionPane.showMessageDialog(null, "Por favor insira um número maior ou igual a 0", "Erro", JOptionPane.ERROR_MESSAGE);
                 capacidadeTextField.setText("");

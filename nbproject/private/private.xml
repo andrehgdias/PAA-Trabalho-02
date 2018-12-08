@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/model/NoHuffman.java</file>
-            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/model/AssociacaoTarefas.java</file>
-            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/model/HuffmanCompressao.java</file>
-            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/model/FilaPrioridade.java</file>
-            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/view/TelaHuffman.java</file>
+            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/model/MochilaBooleana.java</file>
+            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/controller/Controlador.java</file>
+            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/view/TelaMochilaFracionaria.java</file>
+            <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/view/TelaMochilaBooleana.java</file>
             <file>file:/C:/Users/User/Downloads/Unesp/Segundo%20Ano/PAA/PAA-Trabalho-02/src/trabalhopaa02/Principal.java</file>
-=======
-            <file>file:/home/andre/Documentos/PAA/PAA-Trabalho-02/src/view/TelaMochilaFracionaria.java</file>
-            <file>file:/home/andre/Documentos/PAA/PAA-Trabalho-02/src/view/TelaAssociacaoDeTarefas.java</file>
-            <file>file:/home/andre/Documentos/PAA/PAA-Trabalho-02/src/trabalhopaa02/Principal.java</file>
->>>>>>> e47a9132b49b47c1b5583f9fc312bd2b318d6173
         </group>
     </open-files>
 </project-private>
