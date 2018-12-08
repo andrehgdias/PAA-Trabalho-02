@@ -14,6 +14,9 @@ public class NoHuffman {
     private char caractere;
     private int frequencia;
     private NoHuffman esq;
+    private NoHuffman dir;
+    private NoHuffman pai;
+    private NoHuffman prox;
 
     public NoHuffman getProx() {
         return prox;
@@ -22,9 +25,6 @@ public class NoHuffman {
     public void setProx(NoHuffman prox) {
         this.prox = prox;
     }
-    private NoHuffman dir;
-    private NoHuffman pai;
-    private NoHuffman prox;
     
     public NoHuffman(char caractere, int frequencia){
         this.caractere = caractere;

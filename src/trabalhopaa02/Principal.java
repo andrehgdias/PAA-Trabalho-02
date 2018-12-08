@@ -90,21 +90,24 @@ public class Principal {
         
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
-    /************************************** CÓDIGO DE HUFFMAN ****************************************** 
+    /************************************** CÓDIGO DE HUFFMAN ******************************************/
         
         FilaPrioridade fila = new FilaPrioridade();
-        NoHuffman no1 = new NoHuffman('a', 20);
-        NoHuffman no3 = new NoHuffman('c', 21);
-        NoHuffman no2 = new NoHuffman('b', 23);
+        NoHuffman no1 = new NoHuffman('b', 20);
+        NoHuffman no2 = new NoHuffman('d', 23);
+        NoHuffman no3 = new NoHuffman('c', 22);
+        NoHuffman no4 = new NoHuffman('a', 19);
         
-        NoHuffman no4 = new NoHuffman('d', 19);
         fila.addNo(no1);
         fila.addNo(no2);
         fila.addNo(no3);
         fila.addNo(no4);
+        
+        System.out.println("Início: " + fila.getInicio().getCaractere());
+        System.out.println("Fim: " + fila.getFim().getCaractere());
         fila.exibir();
         
-    /************************************** MOCHILA BOOLEANA ******************************************/
+    /************************************** MOCHILA BOOLEANA ******************************************
         
         Item item1 = new Item("Item 1", 2, 3, 1); //(nome, peso, valor, quantidade)
         Item item2 = new Item("Item 2", 3, 6, 1);
@@ -116,6 +119,7 @@ public class Principal {
         itens.add(item3);
         
         MochilaBooleana.resolverMochilaBooleana(itens, 10);
+        /*********************************************************************************************/
     }
 
 }

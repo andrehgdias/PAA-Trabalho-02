@@ -13,20 +13,12 @@ import java.util.ArrayList;
  */
 public class FilaPrioridade {
  
-    private ArrayList<NoHuffman> fila;
     private NoHuffman inicio;
+    private NoHuffman fim;
 
     public FilaPrioridade(){
-        fila = new ArrayList<>();
-        inicio = null;
-    }
-    
-    public ArrayList<NoHuffman> getFila() {
-        return fila;
-    }
-
-    public void setFila(ArrayList<NoHuffman> fila) {
-        this.fila = fila;
+        this.inicio = null;
+        this.fim = null;
     }
 
     public NoHuffman getInicio() {
@@ -36,43 +28,59 @@ public class FilaPrioridade {
     public void setInicio(NoHuffman inicio) {
         this.inicio = inicio;
     }
-    
+
+    public NoHuffman getFim() {
+        return fim;
+    }
+
+    public void setFim(NoHuffman fim) {
+        this.fim = fim;
+    }
+
+    /*
+    Essa função insere um nó na lista encadeada baseado em sua frequência, sendo que os nós com menores
+    frequências ficam no começo da lista, ou seja, a frequência é crescente
+    */
     public void addNo(NoHuffman novoNo){
-        System.out.println("ENTROU "+novoNo.getFrequencia());
-        System.out.println("LISTA ATÉ AQUI: ");
-        this.exibir();
         NoHuffman anterior = null, atual;
         
-        if(fila.isEmpty()){
-            fila.add(novoNo);
-            this.setInicio(novoNo);
+        if(this.inicio == null){ //fila vazia
+            this.inicio = novoNo;
+            this.fim = novoNo;
         }
         else{
-            atual = this.getInicio();
-            while(atual != null && atual.getFrequencia() < novoNo.getFrequencia()){
+            atual = this.inicio;
+            while(atual != null && atual.getFrequencia() <= novoNo.getFrequencia()){
                 anterior = atual;
                 atual = atual.getProx();
             }
-            if(atual == null && anterior != null){ //inserção no fim
-                fila.add(novoNo);
-                anterior.setProx(novoNo);
+            if(anterior == null){ //inserção no início
+                novoNo.setProx(this.inicio);
+                this.inicio = novoNo;
             }
-            else if(anterior != null && atual != null && atual.getFrequencia() >= novoNo.getFrequencia()){ //chegou na posição correta. Inserção entre dois elementos
-                fila.add(novoNo);
+            else if(atual == null){ //inserção no fim
+                anterior.setProx(novoNo);
+                this.fim = novoNo;
+            }
+            else{ //inserção entre dois elementos
                 anterior.setProx(novoNo);
                 novoNo.setProx(atual);
-            }
-            else{ //inserção no início
-                fila.add(novoNo);
-                novoNo.setProx(atual);
-                this.setInicio(novoNo);
+                //this.fim = atual;
             }
         }
     }
     
+    /*
+    Essa função exibe no console a lista encadeada com o caractere, a frequencia e o próximo de cada nó
+    */
     public void exibir(){
-        for(int i = 0; i < fila.size(); i++)
-            System.out.println("["+i+"]: " + fila.get(i).getFrequencia());
+        NoHuffman no = this.inicio;
+        while(no != null){
+            System.out.println("\n" + no.getCaractere() + ", " + no.getFrequencia());
+            no = no.getProx();
+            if(no != null)  System.out.println("PROX: " + no.getFrequencia());
+            else System.out.println("PROX: null");
+        }
     }
     
 }
