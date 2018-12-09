@@ -57,7 +57,7 @@ public class Controlador {
         huffman.resolverHuffmanCompressao(entrada, nos, codigos);
     }
 
-    public static void subsequenciaMaisLonga(String X, String Y) {
+    public static String subsequenciaMaisLonga(String X, String Y) {
         
         int tamanhoX = X.length() + 1;
         int tamanhoY = Y.length() + 1;
@@ -72,7 +72,7 @@ public class Controlador {
 
         SubsequenciaMaisLonga.constroiTabelas(vetorX, vetorY, B, C, 0, 0);
 
-        SubsequenciaMaisLonga.imprimeSolucao(B, vetorX, tamanhoX - 1, tamanhoY - 1);
+        return SubsequenciaMaisLonga.imprimeSolucao(B, vetorX, tamanhoX - 1, tamanhoY - 1);
 
     }
 
