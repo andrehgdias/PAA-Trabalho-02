@@ -57,20 +57,13 @@ public class Controlador {
         huffman.resolverHuffmanCompressao(entrada, nos, codigos);
     }
 
-    public static String subsequenciaMaisLonga(String X, String Y) {
+    public static void gerarTabelasSubsequencia(char vetorX[], char vetorY[], char B[][], int C[][]){
         
-        int tamanhoX = X.length() + 1;
-        int tamanhoY = Y.length() + 1;
-        char vetorX[] = new char[tamanhoX];
-        char vetorY[] = new char[tamanhoY];
-
-        vetorX = Util.stringToArray(X, tamanhoX, true);
-        vetorY = Util.stringToArray(Y, tamanhoY, true);
-
-        char B[][] = new char[tamanhoX][tamanhoY];
-        int C[][] = new int[tamanhoX][tamanhoY];
-
         SubsequenciaMaisLonga.constroiTabelas(vetorX, vetorY, B, C, 0, 0);
+        
+    }
+    
+    public static String subsequenciaMaisLonga(char B[][], char vetorX[], int tamanhoX, int tamanhoY) {
 
         return SubsequenciaMaisLonga.imprimeSolucao(B, vetorX, tamanhoX - 1, tamanhoY - 1);
 
