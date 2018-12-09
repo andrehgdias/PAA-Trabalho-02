@@ -12,7 +12,7 @@ package model;
 public class SubsequenciaMaisLonga {
     
     //Preenchendo as tabelas contidas nas matrizes B e C
-    public static void constroiTabelas(char X[], char Y[], char B[][], int C[][], int i, int j, int armazenaIeJ[]) {
+    public static void constroiTabelas(char X[], char Y[], char B[][], int C[][], int i, int j) {
         
         //inicializando as posição da linha 0 e da coluna 0 com o valor 0
         for( ; i < X.length; i++) {
@@ -38,36 +38,33 @@ public class SubsequenciaMaisLonga {
             }
         }
         
-        //copiando os valores de i e j para o vetor, para que esses valores sejam utilizados no método imprimeSolucao()
-        armazenaIeJ[0] = i;
-        armazenaIeJ[1] = j;
-        
     }
    
     //Imprimindo a Subsequência Comum Mais Longa
-    public static void imprimeSolucao(char B[][], char X[], int i, int j) {
+    public static String imprimeSolucao(char B[][], char X[], int i, int j) {
+        String solucao = "";
         
         if(i == 0 || j == 0)
-            return;	//a posição possui nada armazenado nela
+            return solucao;	//a posição possui nada armazenado nela
         
         switch (B[i][j]) {
             case '\\':
                 //duplo contra-barra para representar o caminho diagonal pra esquerda
-                imprimeSolucao(B,X,i-1,j-1);
-                System.out.println(X[i]);
-                break;
+                solucao += imprimeSolucao(B,X,i-1,j-1);
+                solucao += ((Character)X[i]).toString();
+                return solucao;
                 
             case '|':
                 //representação do caminho para cima
-                imprimeSolucao(B,X,i-1,j);
+                solucao += imprimeSolucao(B,X,i-1,j);
                 break;
                 
             case '_':
                 //representação do caminho para a esquerda
-                imprimeSolucao(B,X,i,j-1);
+                solucao += imprimeSolucao(B,X,i,j-1);
                 break;
         }
-
+        return solucao;
     }
     
 }
