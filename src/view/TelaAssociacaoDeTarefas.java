@@ -15,7 +15,7 @@ import model.Util;
  * @author andre
  */
 public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
-    
+
     private int numTarefas;
     private int numPessoas;
     DefaultTableModel modeloTabela;
@@ -26,18 +26,17 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
      */
     public TelaAssociacaoDeTarefas() {
         initComponents();
-        
+
         modeloTabela = new DefaultTableModel();
         table_Geral.setEnabled(false);
         table_Geral.getTableHeader().setReorderingAllowed(false);
-        
+
         modeloTabelaResultado = new DefaultTableModel();
         table_Resultado.setEnabled(false);
         table_Resultado.getTableHeader().setReorderingAllowed(false);
-        
+
         numTarefas = 0;
         numPessoas = 0;
-        button_Adicionar.setEnabled(false);
         button_Resolver.setEnabled(false);
     }
 
@@ -248,28 +247,28 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
         } else {
             numPessoas = table_Geral.getRowCount();
             int matrizDoProblema[][] = new int[numPessoas][numTarefas];
-            
+
             for (int i = 0; i < numTarefas; i++) {
                 for (int j = 0; j < numPessoas; j++) {
                     matrizDoProblema[j][i] = (int) table_Geral.getValueAt(j, i + 1);
                 }
             }
-            
+
             modeloTabelaResultado.setColumnCount(0);
             modeloTabelaResultado.setRowCount(0);
             int aux[] = Controlador.associacaoDeTarefas(matrizDoProblema, numPessoas, numTarefas);
             int vetorSolucao[] = new int[numTarefas];
-            
+
             System.arraycopy(aux, 0, vetorSolucao, 0, aux.length);
-            
+
             Object linha[] = new Object[numTarefas];
             for (int i = 0; i < numTarefas; i++) {
-                modeloTabelaResultado.addColumn("Tarefa " + (i+1));
+                modeloTabelaResultado.addColumn("Tarefa " + (i + 1));
                 linha[i] = table_Geral.getValueAt(vetorSolucao[i], 0);
             }
             modeloTabelaResultado.addRow(linha);
             table_Resultado.setModel(modeloTabelaResultado);
- 
+
         }
 
     }//GEN-LAST:event_button_ResolverActionPerformed
@@ -281,24 +280,36 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
     private void textField_TarefaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textField_TarefaFocusLost
         // TODO add your handling code here:
         try {
-            if (Integer.parseInt(textField_Tarefa.getText()) > 0) {
-                button_Resolver.setEnabled(false);
-                numTarefas = Integer.parseInt(textField_Tarefa.getText());
-                
-                modeloTabela.setColumnCount(0);
-                modeloTabela.setRowCount(0);
-                
-                modeloTabela.addColumn("");
-                for (int i = 1; i <= numTarefas; i++) {
-                    String titulo = "Tarefa " + i;
-                    modeloTabela.addColumn(titulo);
+            
+            int resposta = 1;
+
+            if (table_Geral.getColumnCount() > 0) {
+                Object[] options = {"Cancelar", "Confirmar"};
+                resposta = JOptionPane.showOptionDialog(null, "Atenção! Caso queira continuar, todos os dados inseridos serão perdidos e a tabela sera resetada.", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+            }
+            
+            if (resposta == 1) {
+                if (Integer.parseInt(textField_Tarefa.getText()) > 0) {
+                    button_Resolver.setEnabled(false);
+                    numTarefas = Integer.parseInt(textField_Tarefa.getText());
+
+                    modeloTabela.setColumnCount(0);
+                    modeloTabela.setRowCount(0);
+
+                    modeloTabela.addColumn("");
+                    for (int i = 1; i <= numTarefas; i++) {
+                        String titulo = "Tarefa " + i;
+                        modeloTabela.addColumn(titulo);
+                    }
+
+                    table_Geral.setModel(modeloTabela);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Número de tarefas deve ser um valor maior do que zero", "Erro", JOptionPane.ERROR_MESSAGE);
+                    textField_Tarefa.setText("");
                 }
-                
-                table_Geral.setModel(modeloTabela);
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Número de tarefas deve ser um valor maior do que zero", "Erro", JOptionPane.ERROR_MESSAGE);
-                textField_Tarefa.setText("");
+            }else{
+                textField_Tarefa.setText(Integer.toString(table_Geral.getColumnCount()));
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Por favor insira um número válido", "ERRO", JOptionPane.ERROR_MESSAGE);
@@ -314,54 +325,56 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
 
     private void button_AdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_AdicionarActionPerformed
         // TODO add your handling code here:
+
         String nome = textField_Pessoa.getText();
-        boolean adicionarLinha = true;
-        int vetorPerformance[] = new int[numTarefas];
-        
-        Object linha[] = new Object[numTarefas + 1];
-        linha[0] = nome;
-        String aux;
-        for (int i = 0; i < numTarefas; i++) {
-            aux = JOptionPane.showInputDialog(null, ("Qual a performance de " + nome + " na tarefa " + (i + 1) + "?"), "Valor da performance", JOptionPane.QUESTION_MESSAGE);
-            if (aux == null) {
-                adicionarLinha = false;
-                break;
-            } else if (aux.isEmpty() || !Util.isNumeric(aux)) {
-                adicionarLinha = false;
-                JOptionPane.showMessageDialog(null, "Insira um valor mair que 0!", "Erro", JOptionPane.ERROR_MESSAGE);
-                i--;
-                continue;
-            }
-            
-            if ((vetorPerformance[i] = Integer.parseInt(aux)) > 0) {
-                linha[i + 1] = vetorPerformance[i];
-            } else {
-                JOptionPane.showMessageDialog(null, "Insira um valor mair que 0!", "Erro", JOptionPane.ERROR_MESSAGE);
-                i--;
-            }
-        }
-        
-        if (adicionarLinha) {
-            modeloTabela.addRow(linha);
-        }
-        if (table_Geral.getRowCount() > 0) {
-            button_Resolver.setEnabled(true);
+        if (nome.equals("") || nome.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Informe o nome da pessoa.", "Erro", JOptionPane.ERROR_MESSAGE);
+        } else if (!Util.isAlpha(nome)) {
+            JOptionPane.showMessageDialog(null, "Nome deve possuir apenas letras!", "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
-            button_Resolver.setEnabled(false);
+
+            boolean adicionarLinha = true;
+            int vetorPerformance[] = new int[numTarefas];
+
+            Object linha[] = new Object[numTarefas + 1];
+            linha[0] = nome;
+            String aux;
+            for (int i = 0; i < numTarefas; i++) {
+                aux = JOptionPane.showInputDialog(null, ("Qual a performance de " + nome + " na tarefa " + (i + 1) + "?"), "Valor da performance", JOptionPane.QUESTION_MESSAGE);
+                if (aux == null) {
+                    adicionarLinha = false;
+                    break;
+                } else if (aux.isEmpty() || !Util.isNumeric(aux)) {
+                    adicionarLinha = false;
+                    JOptionPane.showMessageDialog(null, "Insira um valor mair que 0!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    i--;
+                    continue;
+                }
+
+                if ((vetorPerformance[i] = Integer.parseInt(aux)) > 0) {
+                    linha[i + 1] = vetorPerformance[i];
+                } else {
+                    JOptionPane.showMessageDialog(null, "Insira um valor mair que 0!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    i--;
+                }
+            }
+
+            if (adicionarLinha) {
+                modeloTabela.addRow(linha);
+            }
+            if (table_Geral.getRowCount() > 0) {
+                button_Resolver.setEnabled(true);
+            } else {
+                button_Resolver.setEnabled(false);
+            }
+
+            textField_Pessoa.setText("");
+            textField_Pessoa.setText("");
         }
-        
-        textField_Pessoa.setText("");
-        textField_Pessoa.setText("");
     }//GEN-LAST:event_button_AdicionarActionPerformed
 
     private void textField_PessoaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textField_PessoaFocusLost
-        // TODO add your handling code here:
-        String nome = textField_Pessoa.getText();
-        if (nome.equals("") || nome.isEmpty() || !Util.isAlpha(nome)) {
-            button_Adicionar.setEnabled(false);
-        } else {
-            button_Adicionar.setEnabled(true);
-        }
+        // TODO add your handling code here
     }//GEN-LAST:event_textField_PessoaFocusLost
 
     /**
