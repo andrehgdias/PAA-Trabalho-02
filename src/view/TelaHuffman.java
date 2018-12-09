@@ -9,6 +9,7 @@ import controller.Controlador;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.NoHuffman;
+import model.Util;
 
 /**
  *
@@ -145,7 +146,7 @@ public class TelaHuffman extends javax.swing.JFrame {
         
         texto = textoTextArea.getText();
         
-        Controlador.huffmanCompressao(texto, nos, codigos);
+        Controlador.huffmanCompressao(Util.removerEnter(texto), nos, codigos);
         
         modeloTabela.setRowCount(0);
         
