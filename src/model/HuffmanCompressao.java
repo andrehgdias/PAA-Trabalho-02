@@ -6,7 +6,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.PriorityQueue;
 
 /**
  *
@@ -134,19 +133,20 @@ public class HuffmanCompressao {
     /*
     Essa função lê a entrada, monta a árvore e imprime no console o código e a frequência dos caracteres utilizados
     */
-    public String resolverHuffmanCompressao(String entrada){
+    public String resolverHuffmanCompressao(String entrada, ArrayList<NoHuffman> nos, ArrayList<String> codigos){
         String solucao = "";
         
         this.lerEntrada(entrada);
         this.adicionarUsados();
         this.montarArvore();
-        this.exibirArvorePreOrdem(this.getFila().getInicio());
         
         NoHuffman no = this.copiaPrimeiroNo;
         
         while(no != null){
-            if(no.getCaractere() != '~')
-                System.out.println(no.getCaractere() + ", " + no.getFrequencia() + ", " + this.recuperarCodigo(no) + "\n");
+            if(no.getCaractere() != '~'){
+                nos.add(no);
+                codigos.add(this.recuperarCodigo(no));
+            }
             no = no.getProx();
         }
         

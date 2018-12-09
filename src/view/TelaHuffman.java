@@ -5,21 +5,25 @@
  */
 package view;
 
+import controller.Controlador;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import model.NoHuffman;
 
 /**
  *
  * @author User
  */
-public class TelaHuffman extends javax.swing.JFrame {
-
-    private int[] frequencia = new int[26];
+public class TelaHuffman extends javax.swing.JFrame {  
+    
+    private final DefaultTableModel modeloTabela;
+    ArrayList<NoHuffman> nos = new ArrayList<>();
+    ArrayList<String> codigos = new ArrayList<>();
     
     public TelaHuffman() {
-        for(int i = 0; i < 26; i++){
-            frequencia[i] = 0;
-        }
         initComponents();
+        textoTextArea.setLineWrap(true);
+        this.modeloTabela = (DefaultTableModel)tabela.getModel();
     }
 
     /**
@@ -35,7 +39,7 @@ public class TelaHuffman extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         textoTextArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         comprimirButton = new javax.swing.JButton();
 
@@ -47,23 +51,30 @@ public class TelaHuffman extends javax.swing.JFrame {
         textoTextArea.setRows(5);
         jScrollPane1.setViewportView(textoTextArea);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Caractere", "Frequência", "Código comprimido"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabela);
 
         jLabel1.setText("Digite abaixo o texto a ser comprimido");
 
@@ -133,13 +144,19 @@ public class TelaHuffman extends javax.swing.JFrame {
         String texto;
         
         texto = textoTextArea.getText();
-        texto = texto.toLowerCase();
         
-        for(int i = 0; i < texto.length(); i++){
-            int pos = (int) texto.charAt(i) - 97;
-            frequencia[pos]++;
+        Controlador.huffmanCompressao(texto, nos, codigos);
+        
+        modeloTabela.setRowCount(0);
+        
+        for(int i = 0; i < nos.size(); i++){
+            Object[] linha = new Object[3];
+            linha[0] = "'" + nos.get(i).getCaractere() + "'";
+            linha[1] = nos.get(i).getFrequencia();
+            linha[2] = codigos.get(i);
+            modeloTabela.addRow(linha);
         }
-        
+                
     }//GEN-LAST:event_comprimirButtonActionPerformed
 
     /**
@@ -183,7 +200,7 @@ public class TelaHuffman extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabela;
     private javax.swing.JTextArea textoTextArea;
     // End of variables declaration//GEN-END:variables
 }

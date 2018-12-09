@@ -5,12 +5,13 @@
  */
 package controller;
 
-import com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets;
 import java.util.ArrayList;
 import model.AssociacaoTarefas;
+import model.HuffmanCompressao;
 import model.Item;
 import model.MochilaBooleana;
 import model.MochilaFracionaria;
+import model.NoHuffman;
 import model.NoSolucoes;
 
 /**
@@ -47,6 +48,11 @@ public class Controlador {
     
     public static String mochilaBooleana(ArrayList<Item> itens, int capacidade){
         return MochilaBooleana.resolverMochilaBooleana(itens, capacidade);
+    }
+    
+    public static void huffmanCompressao(String entrada, ArrayList<NoHuffman> nos, ArrayList<String> codigos){
+        HuffmanCompressao huffman = new HuffmanCompressao();
+        huffman.resolverHuffmanCompressao(entrada, nos, codigos);
     }
     
 }

@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import model.AssociacaoTarefas;
 import model.FilaPrioridade;
 import model.HuffmanCompressao;
-
 import model.NoSolucoes;
 import model.Item;
 import model.MochilaBooleana;
 import model.MochilaFracionaria;
 import model.NoHuffman;
-
 import model.SubsequenciaMaisLonga;
 
 public class Principal {
@@ -106,9 +104,14 @@ public class Principal {
         
         //fila.exibir();
         
+        ArrayList<NoHuffman> nos = new ArrayList<>();
+        ArrayList<String> codigos = new ArrayList<>();
         String txt = "fffffeeeeeeeeeccccccccccccbbbbbbbbbbbbbddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
         HuffmanCompressao huffman = new HuffmanCompressao();
-        huffman.resolverHuffmanCompressao(txt);
+        huffman.resolverHuffmanCompressao(txt, nos, codigos);
+        for(int i = 0; i < nos.size(); i++){
+            System.out.println(nos.get(i).getCaractere() + ", " + codigos.get(i));
+        }
         
     /************************************** MOCHILA BOOLEANA ******************************************
         
