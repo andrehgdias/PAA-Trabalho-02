@@ -65,7 +65,7 @@ public class TelaSubsequenciaMaisLonga extends javax.swing.JFrame {
 
         txtArea_X.setColumns(20);
         txtArea_X.setRows(5);
-        txtArea_X.setText("Sequência 1");
+        txtArea_X.setText("Buscando essa sequencia 1");
         txtArea_X.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtArea_XFocusLost(evt);
@@ -75,7 +75,7 @@ public class TelaSubsequenciaMaisLonga extends javax.swing.JFrame {
 
         txtArea_Y.setColumns(20);
         txtArea_Y.setRows(5);
-        txtArea_Y.setText("Sequência 2");
+        txtArea_Y.setText("nesta sequência 2");
         txtArea_Y.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtArea_YFocusLost(evt);

@@ -15,19 +15,26 @@ import model.Util;
  * @author andre
  */
 public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
-
+    
     private int numTarefas;
     private int numPessoas;
     DefaultTableModel modeloTabela;
+    DefaultTableModel modeloTabelaResultado;
 
     /**
      * Creates new form TelaAssociacaoDeTarefas
      */
     public TelaAssociacaoDeTarefas() {
         initComponents();
+        
         modeloTabela = new DefaultTableModel();
         table_Geral.setEnabled(false);
         table_Geral.getTableHeader().setReorderingAllowed(false);
+        
+        modeloTabelaResultado = new DefaultTableModel();
+        table_Resultado.setEnabled(false);
+        table_Resultado.getTableHeader().setReorderingAllowed(false);
+        
         numTarefas = 0;
         numPessoas = 0;
         button_Adicionar.setEnabled(false);
@@ -55,6 +62,8 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         textField_Tarefa = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table_Resultado = new javax.swing.JTable();
 
         jLabel2.setText("Número de pessoas");
 
@@ -172,7 +181,18 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        textField_Tarefa.getAccessibleContext().setAccessibleDescription("Quantidade de tarefas");
+        table_Resultado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(table_Resultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,17 +200,22 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addGap(0, 6, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button_Resolver)
-                .addGap(228, 228, 228))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(226, 226, 226)
+                .addComponent(button_Resolver, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,9 +226,11 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(button_Resolver)
-                .addContainerGap())
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,19 +243,33 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
 
     private void button_ResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_ResolverActionPerformed
         // TODO add your handling code here:
-        if (table_Geral.getRowCount() < table_Geral.getColumnCount()-1) {
+        if (table_Geral.getRowCount() < table_Geral.getColumnCount() - 1) {
             JOptionPane.showMessageDialog(null, "Impossivel de resolver, número de pessoas MENOR que o número de tarefas.", "Erro", JOptionPane.ERROR_MESSAGE);
-        }else{
+        } else {
             numPessoas = table_Geral.getRowCount();
             int matrizDoProblema[][] = new int[numPessoas][numTarefas];
             
             for (int i = 0; i < numTarefas; i++) {
                 for (int j = 0; j < numPessoas; j++) {
-                    matrizDoProblema[j][i] = (int)table_Geral.getValueAt(j, i+1);
+                    matrizDoProblema[j][i] = (int) table_Geral.getValueAt(j, i + 1);
                 }
             }
             
-            Controlador.associacaoDeTarefas(matrizDoProblema, numPessoas, numTarefas);
+            modeloTabelaResultado.setColumnCount(0);
+            modeloTabelaResultado.setRowCount(0);
+            int aux[] = Controlador.associacaoDeTarefas(matrizDoProblema, numPessoas, numTarefas);
+            int vetorSolucao[] = new int[numTarefas];
+            
+            System.arraycopy(aux, 0, vetorSolucao, 0, aux.length);
+            
+            Object linha[] = new Object[numTarefas];
+            for (int i = 0; i < numTarefas; i++) {
+                modeloTabelaResultado.addColumn("Tarefa " + (i+1));
+                linha[i] = table_Geral.getValueAt(vetorSolucao[i], 0);
+            }
+            modeloTabelaResultado.addRow(linha);
+            table_Resultado.setModel(modeloTabelaResultado);
+ 
         }
 
     }//GEN-LAST:event_button_ResolverActionPerformed
@@ -243,18 +284,18 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
             if (Integer.parseInt(textField_Tarefa.getText()) > 0) {
                 button_Resolver.setEnabled(false);
                 numTarefas = Integer.parseInt(textField_Tarefa.getText());
-
+                
                 modeloTabela.setColumnCount(0);
                 modeloTabela.setRowCount(0);
-
+                
                 modeloTabela.addColumn("");
                 for (int i = 1; i <= numTarefas; i++) {
                     String titulo = "Tarefa " + i;
                     modeloTabela.addColumn(titulo);
                 }
-
+                
                 table_Geral.setModel(modeloTabela);
-
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Número de tarefas deve ser um valor maior do que zero", "Erro", JOptionPane.ERROR_MESSAGE);
                 textField_Tarefa.setText("");
@@ -276,7 +317,7 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
         String nome = textField_Pessoa.getText();
         boolean adicionarLinha = true;
         int vetorPerformance[] = new int[numTarefas];
-
+        
         Object linha[] = new Object[numTarefas + 1];
         linha[0] = nome;
         String aux;
@@ -291,7 +332,7 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
                 i--;
                 continue;
             }
-
+            
             if ((vetorPerformance[i] = Integer.parseInt(aux)) > 0) {
                 linha[i + 1] = vetorPerformance[i];
             } else {
@@ -299,7 +340,7 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
                 i--;
             }
         }
-
+        
         if (adicionarLinha) {
             modeloTabela.addRow(linha);
         }
@@ -308,7 +349,7 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
         } else {
             button_Resolver.setEnabled(false);
         }
-
+        
         textField_Pessoa.setText("");
         textField_Pessoa.setText("");
     }//GEN-LAST:event_button_AdicionarActionPerformed
@@ -367,8 +408,10 @@ public class TelaAssociacaoDeTarefas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTable table_Geral;
+    private javax.swing.JTable table_Resultado;
     private javax.swing.JTextField textField_Pessoa;
     private javax.swing.JTextField textField_Tarefa;
     // End of variables declaration//GEN-END:variables

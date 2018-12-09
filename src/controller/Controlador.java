@@ -32,10 +32,10 @@ public class Controlador {
         return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao, copiaCapacidadeMochila);
     }
 
-    public static void associacaoDeTarefas(int matrizDoProblema[][], int numPessoas, int numTarefas) {
+    public static int[] associacaoDeTarefas(int matrizDoProblema[][], int numPessoas, int numTarefas) {
         NoSolucoes solucaoEx1 = new NoSolucoes(numTarefas);
 
-        for (int k = 0; k < 4; k++) {
+        for (int k = 0; k < numTarefas; k++) {
             solucaoEx1.getVetorSolucaoTemporaria()[k] = -1;
         }
         AssociacaoTarefas.resolverAssociacaoDeTarefas(matrizDoProblema, numPessoas, numTarefas, 0, 0, solucaoEx1, true);
@@ -46,6 +46,8 @@ public class Controlador {
         for (int j = 0; j < numTarefas; j++) {
             System.out.println(solucaoEx1.getVetorSolucao()[j]);
         }
+        
+        return solucaoEx1.getVetorSolucao();
     }
 
     public static String mochilaBooleana(ArrayList<Item> itens, int capacidade) {

@@ -108,7 +108,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Sequ&#xea;ncia 1"/>
+                <Property name="text" type="java.lang.String" value="Buscando essa sequencia 1"/>
               </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtArea_XFocusLost"/>
@@ -127,7 +127,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Sequ&#xea;ncia 2"/>
+                <Property name="text" type="java.lang.String" value="nesta sequ&#xea;ncia 2"/>
               </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtArea_YFocusLost"/>

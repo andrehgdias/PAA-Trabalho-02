@@ -5,16 +5,22 @@ package model;
  * @author andre
  */
 public class NoSolucoes {
+
     private int somaSolucaoAtual;
     private int melhorSolucao;
-    
-    int vetorSolucao[] = new int[4];
-    int vetorSolucaoTemporaria[] = new int[4];
+
+    int vetorSolucao[];
+    int vetorSolucaoTemporaria[];
 
     public NoSolucoes(int numTarefas) {
-        for(int i=0; i<numTarefas; i++)
+
+        vetorSolucao = new int[numTarefas];
+        vetorSolucaoTemporaria = new int[numTarefas];
+
+        for (int i = 0; i < numTarefas; i++) {
             this.vetorSolucao[i] = this.vetorSolucaoTemporaria[i] = -1;
-        
+        }
+
         this.melhorSolucao = Integer.MAX_VALUE;
         this.somaSolucaoAtual = 0;
     }
@@ -50,5 +56,5 @@ public class NoSolucoes {
     public void setVetorSolucaoTemporaria(int[] vetorSolucaoTemporaria) {
         this.vetorSolucaoTemporaria = vetorSolucaoTemporaria;
     }
-       
+
 }
