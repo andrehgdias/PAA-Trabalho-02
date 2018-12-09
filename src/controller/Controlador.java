@@ -5,11 +5,13 @@
  */
 package controller;
 
-import com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets;
 import java.util.ArrayList;
 import model.AssociacaoTarefas;
+import model.HuffmanCompressao;
 import model.Item;
+import model.MochilaBooleana;
 import model.MochilaFracionaria;
+import model.NoHuffman;
 import model.NoSolucoes;
 
 /**
@@ -20,10 +22,12 @@ public class Controlador {
     
     public static String mochilaFracionaria(ArrayList<Item> itens, double capacidade){
         ArrayList<Item> solucao;
-
+        double copiaCapacidadeMochila = capacidade;
+        
         Item.ordenarPorValor(itens);
+        
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, capacidade);
-        return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
+        return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao, copiaCapacidadeMochila);
     }
     
     public static void associacaoDeTarefas(int matrizDoProblema[][], int numPessoas, int numTarefas){
@@ -40,6 +44,15 @@ public class Controlador {
         for (int j = 0; j < numTarefas; j++) {
             System.out.println(solucaoEx1.getVetorSolucao()[j]);
         }
+    }
+    
+    public static String mochilaBooleana(ArrayList<Item> itens, int capacidade){
+        return MochilaBooleana.resolverMochilaBooleana(itens, capacidade);
+    }
+    
+    public static void huffmanCompressao(String entrada, ArrayList<NoHuffman> nos, ArrayList<String> codigos){
+        HuffmanCompressao huffman = new HuffmanCompressao();
+        huffman.resolverHuffmanCompressao(entrada, nos, codigos);
     }
     
 }

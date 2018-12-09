@@ -15,18 +15,19 @@ import model.Item;
  *
  * @author User
  */
-public class TelaMochilaFracionaria extends javax.swing.JFrame {
+public class TelaMochilaBooleana extends javax.swing.JFrame {
 
-    private boolean valido_itens, valido_capacidade;
-    private double capacidade = 0;
+    private boolean valido_capacidade, valido_itens;
+    private int capacidade;
     private ArrayList<Item> itens = new ArrayList<>();
     private final DefaultTableModel modeloTabela;
     
-    public TelaMochilaFracionaria() {
+    public TelaMochilaBooleana() {
         initComponents();
         this.modeloTabela = (DefaultTableModel) tabela.getModel();
-        valido_itens = false;
+        capacidade = 0;
         valido_capacidade = false;
+        valido_itens = false;
         resolverButton.setEnabled(false);
     }
 
@@ -59,7 +60,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         resolverButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Mochila Fracionária");
+        setTitle("Mochila Booleana");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Item"));
@@ -97,7 +98,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -105,8 +106,8 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pesoTextField)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addButton)
                 .addContainerGap())
         );
@@ -120,11 +121,9 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(valorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pesoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addButton))
                 .addContainerGap(14, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(addButton)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -152,11 +151,14 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabela);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Mochila Fracionária"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Mochila Booleana"));
 
         jLabel4.setText("Defina a capacidade da mochila");
 
         capacidadeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                capacidadeTextFieldFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 capacidadeTextFieldFocusLost(evt);
             }
@@ -179,11 +181,11 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(capacidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(okButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -218,7 +220,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -236,13 +238,13 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(resolverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(resolverButton)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -252,16 +254,14 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resolverButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel1.getAccessibleContext().setAccessibleName("Adicionar Item");
 
         pack();
         setLocationRelativeTo(null);
@@ -277,16 +277,16 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        
+
         String nome;
-        double valor;
-        double peso;
-        
+        int valor;
+        int peso;
+
         try {
             nome = nomeTextField.getText();
-            valor = Double.parseDouble(valorTextField.getText());
-            peso = Double.parseDouble(pesoTextField.getText());
-        
+            valor = Integer.parseInt(valorTextField.getText());
+            peso = Integer.parseInt(pesoTextField.getText());
+
             Item item = new Item(nome, peso, valor, 1);
 
             this.itens.add(item);
@@ -302,41 +302,37 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
             if(valido_capacidade)
                 resolverButton.setEnabled(true);
         } catch (NumberFormatException e) {
-            resolverButton.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "Por favor insira um número válido", "ERRO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor insira apenas números inteiros", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         valorTextField.setText("");
         pesoTextField.setText("");
-        
-        
-        
+
     }//GEN-LAST:event_addButtonActionPerformed
-
-    private void resolverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resolverButtonActionPerformed
-        // TODO add your handling code here:
-        
-        if(valido_itens && valido_capacidade){
-            String solucao;
-            solucao = Controlador.mochilaFracionaria(this.itens, capacidade);
-            solucaoTextArea.setText(solucao);
-        }
-        else JOptionPane.showMessageDialog(null, "É necessário que haja pelo menos um item e a capacidade deve ser especificada", "Erro", JOptionPane.ERROR_MESSAGE);
-        
-    }//GEN-LAST:event_resolverButtonActionPerformed
-
-    private void capacidadeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacidadeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_capacidadeTextFieldActionPerformed
 
     private void capacidadeTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_capacidadeTextFieldFocusLost
         // TODO add your handling code here:
         
     }//GEN-LAST:event_capacidadeTextFieldFocusLost
 
+    private void capacidadeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacidadeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacidadeTextFieldActionPerformed
+
+    private void resolverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resolverButtonActionPerformed
+        // TODO add your handling code here        
+        if(valido_itens && valido_capacidade){
+            String solucao;
+            solucao = Controlador.mochilaBooleana(this.itens, capacidade);
+            solucaoTextArea.setText(solucao);
+        }
+        else JOptionPane.showMessageDialog(null, "É necessário que haja pelo menos um item e a capacidade deve ser especificada", "Erro", JOptionPane.ERROR_MESSAGE);
+
+    }//GEN-LAST:event_resolverButtonActionPerformed
+
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         // TODO add your handling code here:
         try {
-            capacidade = Double.parseDouble(capacidadeTextField.getText());
+            capacidade = Integer.parseInt(capacidadeTextField.getText());
             valido_capacidade = false;
             if(capacidade < 0){
                 JOptionPane.showMessageDialog(null, "Por favor insira um número maior ou igual a 0", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -350,10 +346,13 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
             }
             
         } catch (NumberFormatException e) {
-            resolverButton.setEnabled(false);
-            JOptionPane.showMessageDialog(null, "Por favor insira um número válido", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Por favor insira um número inteiro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_okButtonActionPerformed
+
+    private void capacidadeTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_capacidadeTextFieldFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacidadeTextFieldFocusGained
 
     /**
      * @param args the command line arguments
@@ -372,13 +371,13 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaBooleana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaBooleana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaBooleana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaMochilaFracionaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMochilaBooleana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -386,7 +385,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaMochilaFracionaria().setVisible(true);
+                new TelaMochilaBooleana().setVisible(true);
             }
         });
     }

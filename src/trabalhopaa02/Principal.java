@@ -2,16 +2,20 @@ package trabalhopaa02;
 
 import java.util.ArrayList;
 import model.AssociacaoTarefas;
-
+import model.FilaPrioridade;
+import model.HuffmanCompressao;
 import model.NoSolucoes;
 import model.Item;
+import model.MochilaBooleana;
 import model.MochilaFracionaria;
-
+import model.NoHuffman;
 import model.SubsequenciaMaisLonga;
 
 public class Principal {
 
     public static void main(String[] args) {
+
+        /*********************************** ASSOCIAÇÃO DE TAREFAS ****************************************
 
         int matriz[][] = {{11, 12, 18, 40}, //Matriz 4x4 -> Linha = Pessoa, Coluna = Tarefa
                           {14, 15, 13, 22},
@@ -20,32 +24,33 @@ public class Principal {
 
         NoSolucoes solucaoEx1 = new NoSolucoes(4);
         
+        for (int k = 0; k < 4; k++) {
+            solucaoEx1.getVetorSolucaoTemporaria()[k] = -1;
+        }
+        
         AssociacaoTarefas.resolverAssociacaoDeTarefas(matriz, 4, 4, 0, 0, solucaoEx1, true);
 
         for (int j = 0; j < 4; j++) {
             System.out.println(solucaoEx1.getVetorSolucao()[j]);
         }
 
-        /************************************ MOCHILA FRACIONARIA *****************************************/
-        Item item1 = new Item("Item 1", 40, 840, 1);
-        Item item2 = new Item("Item 2", 30, 600, 1);
-        Item item3 = new Item("Item 3", 20, 400, 1);
-        Item item4 = new Item("Item 4", 10, 100, 1);
+        /************************************ MOCHILA FRACIONARIA *****************************************
+        Item item1 = new Item("Item 1", 5, 10, 1); //(nome, peso, valor, quantidade)
+        Item item2 = new Item("Item 2", 1, 50, 1);
+        Item item3 = new Item("Item 3", 3, 14, 1);
 
         ArrayList<Item> solucao;
         ArrayList<Item> itens = new ArrayList<>();
 
         itens.add(item1);
-        itens.add(item3);
-        itens.add(item4);
         itens.add(item2);
+        itens.add(item3);
 
         Item.ordenarPorValor(itens);
-        solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 50);
-        MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao);
+        solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 2);
+        System.out.println(MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao));
 
-        /*************************************************************************************************/
-        
+        /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************
 
         int m = 8;	//comprimento de X
         int n = 7;	//comprimento de Y
@@ -84,6 +89,43 @@ public class Principal {
         
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
+    /************************************** CÓDIGO DE HUFFMAN ******************************************/
+        
+        FilaPrioridade fila = new FilaPrioridade();
+        NoHuffman no1 = new NoHuffman('b', 20);
+        NoHuffman no2 = new NoHuffman('d', 23);
+        NoHuffman no3 = new NoHuffman('c', 22);
+        NoHuffman no4 = new NoHuffman('a', 19);
+        
+        fila.addNo(no1);
+        fila.addNo(no2);
+        fila.addNo(no3);
+        fila.addNo(no4);
+        
+        //fila.exibir();
+        
+        ArrayList<NoHuffman> nos = new ArrayList<>();
+        ArrayList<String> codigos = new ArrayList<>();
+        String txt = "fffffeeeeeeeeeccccccccccccbbbbbbbbbbbbbddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        HuffmanCompressao huffman = new HuffmanCompressao();
+        huffman.resolverHuffmanCompressao(txt, nos, codigos);
+        for(int i = 0; i < nos.size(); i++){
+            System.out.println(nos.get(i).getCaractere() + ", " + codigos.get(i));
+        }
+        
+    /************************************** MOCHILA BOOLEANA ******************************************
+        
+        Item item1 = new Item("Item 1", 2, 3, 1); //(nome, peso, valor, quantidade)
+        Item item2 = new Item("Item 2", 3, 6, 1);
+        Item item3 = new Item("Item 3", 6, 9, 1);
+        
+        ArrayList<Item> itens = new ArrayList<>();
+        itens.add(item1);
+        itens.add(item2);
+        itens.add(item3);
+        
+        MochilaBooleana.resolverMochilaBooleana(itens, 10);
+        /*********************************************************************************************/
     }
 
 }

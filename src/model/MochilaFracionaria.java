@@ -45,15 +45,18 @@ public class MochilaFracionaria {
     Recebe como parâmetro o ArrayList da nossa solução
     Retorna uma String com todas essas informações
     */
-    public static String exibirSolucaoMochilaFracionaria(ArrayList<Item> itens){
+    public static String exibirSolucaoMochilaFracionaria(ArrayList<Item> itens, double capacidade){
         String txt = "";
         double valorAgregado = 0;
         DecimalFormat df = new DecimalFormat("0.00");
         
+        txt += "Capacidade da mochila: " + df.format(capacidade) + " kg\n" +
+               "Itens da solução:\n";
+        
         for(int i = 0; i < itens.size(); i++){
-            txt += "Item: " + itens.get(i).getNome() + "\n" +
+            txt += "- " + itens.get(i).getNome() + "\n" +
                    "Quantidade: " + itens.get(i).getQuantidadeFormatada()+ "\n\n";
-            valorAgregado += itens.get(i).getQuantidade() * itens.get(i).getValor();
+                    valorAgregado += itens.get(i).getQuantidade() * itens.get(i).getValor();
         }
         
         txt += "O valor total da mochila é de R$" + df.format(valorAgregado);

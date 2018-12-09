@@ -7,6 +7,7 @@ package model;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -69,16 +70,11 @@ public class Item{
     */
     public static void ordenarPorValor(ArrayList<Item> itens){
         for (int i = 0; i < itens.size() - 1; i++) {
-            Item item1 = itens.get(i);
             for (int j = i + 1; j < itens.size(); j++) {
-                Item item2 = itens.get(j);
-                if (item1.getValor() < item2.getValor()) { //ordem decrescente
-                    Item aux = item1;
-                    itens.set(i, item2);
-                    itens.set(j, aux);
+                if (itens.get(i).getValor() < itens.get(j).getValor()) { //ordem decrescente
+                      Collections.swap(itens, i, j);
                 }
             }
-        }
+        }   
     }
-    
 }
