@@ -38,4 +38,22 @@ public class Util {
         }
         return true;
     }
+    
+    public static char[] stringToArray(String str, int tamanho, boolean charTerminacao){
+        char array[] = new char[tamanho];
+        int i = 0;
+        int j = 0;
+        int limite = str.length();
+        
+        if(charTerminacao){
+            array[i] = '\0';
+            i++;
+            limite++;
+        }
+        for(; i < limite; i++){
+            array[i] = str.charAt(j);
+            j++;
+        }
+        return array;
+    }
 }
