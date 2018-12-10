@@ -89,7 +89,7 @@ public class Principal {
         
         SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
 
-    /************************************** CÓDIGO DE HUFFMAN ******************************************/
+    /************************************** CÓDIGO DE HUFFMAN ******************************************
         
         FilaPrioridade fila = new FilaPrioridade();
         NoHuffman no1 = new NoHuffman('b', 20);
