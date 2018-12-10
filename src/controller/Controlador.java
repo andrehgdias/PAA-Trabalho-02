@@ -27,10 +27,6 @@ public class Controlador {
         ArrayList<Item> solucao;
 
         QuickSort.quicksort(itens, 0, itens.size() - 1);
-        
-        for(Item i:itens){
-            System.out.println(i.getNome());
-        }
 
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, capacidade);
         return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao, capacidade);
