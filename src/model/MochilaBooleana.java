@@ -31,8 +31,10 @@ public class MochilaBooleana {
         for(i = 1; i < linhas; i++){                
             for(j = 1; j < colunas; j++){
                 if(itens.get(i - 1).getPeso() <= j){ //item cabe
-                    int pos = j - (int)itens.get(i - 1).getPeso();      
-                    tabela[i][j] = tabela[i - 1][pos] + (int) itens.get(i - 1).getValor();
+                    if(tabela[i - 1][j - (int)itens.get(i - 1).getPeso()] + (int)itens.get(i - 1).getValor() > tabela[i - 1][j])
+                        tabela[i][j] = tabela[i - 1][j - (int)itens.get(i - 1).getPeso()] + (int)itens.get(i - 1).getValor();
+                    else
+                        tabela[i][j] = tabela[i - 1][j];
                 }
                 else{ //item não cabe
                     tabela[i][j] = 0;
