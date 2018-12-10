@@ -23,15 +23,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD:src/view/Principal.form
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="90" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
           </Group>
+=======
+          <EmptySpace min="0" pref="663" max="32767" attributes="0"/>
+>>>>>>> 8424244900d6d6bda7e5557639c925021a4cd088:src/view/TelaPrincipal.form
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD:src/view/Principal.form
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="38" max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -49,4 +54,10 @@
       </Properties>
     </Component>
   </SubComponents>
+=======
+          <EmptySpace min="0" pref="469" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+>>>>>>> 8424244900d6d6bda7e5557639c925021a4cd088:src/view/TelaPrincipal.form
 </Form>
