@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -13,69 +14,65 @@ import java.util.ArrayList;
  */
 public class MergeSort {
     
-    private ArrayList<Item> inputArray;
+    private ArrayList<Item> entrada;
      
-    public ArrayList<Item> getSortedArray() {
-        return inputArray;
+    public ArrayList<Item> getArrayOrdenado() {
+        return entrada;
     }
  
     public MergeSort(ArrayList<Item> inputArray){
-        this.inputArray = inputArray;
+        this.entrada = inputArray;
     }
      
-    public void sortGivenArray(){       
-        divide(0, this.inputArray.size()-1);
+    public void ordenarArray(){       
+        mergeSort(0, this.entrada.size() - 1);
     }
      
-    public void divide(int startIndex,int endIndex){
-         
-        //Divide till you breakdown your list to single element
-        if(startIndex<endIndex && (endIndex-startIndex)>=1){
-            int mid = (endIndex + startIndex)/2;
-            divide(startIndex, mid);
-            divide(mid+1, endIndex);        
+    public void mergeSort(int comeco,int fim){
+        if(comeco<fim && (fim-comeco) >= 1){
+            int meio = (fim + comeco)/2;
+            mergeSort(comeco, meio);
+            mergeSort(meio+1, fim);        
              
-            //merging Sorted array produce above into one sorted array
-            merger(startIndex,mid,endIndex);            
+            merge(comeco,meio,fim);            
         }       
     }   
      
-    public void merger(int startIndex,int midIndex,int endIndex){
+    public void merge(int comeco, int meio, int fim){
          
-        //Below is the mergedarray that will be sorted array Array[i-midIndex] , Array[(midIndex+1)-endIndex]
-        ArrayList<Item> mergedSortedArray = new ArrayList<Item>();
+        ArrayList<Item> arrayOrdenado = new ArrayList<>();
          
-        int leftIndex = startIndex;
-        int rightIndex = midIndex+1;
+        int esquerda = comeco;
+        int direita = meio + 1;
          
-        while(leftIndex<=midIndex && rightIndex<=endIndex){
-            if(inputArray.get(leftIndex).getValor()<=inputArray.get(rightIndex).getValor()){
-                mergedSortedArray.add(inputArray.get(leftIndex));
-                leftIndex++;
+        while(esquerda <= meio && direita <= fim){
+            if(entrada.get(esquerda).getValor() > entrada.get(direita).getValor()){
+                arrayOrdenado.add(entrada.get(esquerda));
+                esquerda++;
             }else{
-                mergedSortedArray.add(inputArray.get(rightIndex));
-                rightIndex++;
+                arrayOrdenado.add(entrada.get(direita));
+                direita++;
             }
         }       
          
-        //Either of below while loop will execute
-        while(leftIndex<=midIndex){
-            mergedSortedArray.add(inputArray.get(leftIndex));
-            leftIndex++;
+        while(esquerda <= meio){
+            arrayOrdenado.add(entrada.get(esquerda));
+            esquerda++;
         }
          
-        while(rightIndex<=endIndex){
-            mergedSortedArray.add(inputArray.get(rightIndex));
-            rightIndex++;
+        while(direita <= fim){
+            arrayOrdenado.add(entrada.get(direita));
+            direita++;
         }
          
         int i = 0;
-        int j = startIndex;
-        //Setting sorted array to original one
-        while(i<mergedSortedArray.size()){
-            inputArray.set(j, mergedSortedArray.get(i++));
+        int j = comeco;
+        
+        while(i < arrayOrdenado.size()){
+            entrada.set(j, arrayOrdenado.get(i++));
             j++;
         }
+        
     }
     
 }

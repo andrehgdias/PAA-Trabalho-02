@@ -64,17 +64,4 @@ public class Item{
         this.nome = nome;
     }
     
-    /*
-    Essa função é um Bubble Sort que ordena um ArrayList de itens decrescentemente em 
-    relação ao valor, ou seja, os itens de maior valor ficam no início do ArrayList
-    */
-    public static void ordenarPorValor(ArrayList<Item> itens){
-        for (int i = 0; i < itens.size() - 1; i++) {
-            for (int j = i + 1; j < itens.size(); j++) {
-                if (itens.get(i).getValor() < itens.get(j).getValor()) { //ordem decrescente
-                      Collections.swap(itens, i, j);
-                }
-            }
-        }   
-    }
 }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import model.AssociacaoTarefas;
 import model.HuffmanCompressao;
 import model.Item;
+import model.MergeSort;
 import model.MochilaBooleana;
 import model.MochilaFracionaria;
 import model.NoHuffman;
@@ -26,10 +27,16 @@ public class Controlador {
         ArrayList<Item> solucao;
         double copiaCapacidadeMochila = capacidade;
 
-        Item.ordenarPorValor(itens);
+        MergeSort ms = new MergeSort(itens);
+        ms.ordenarArray();
+        itens = ms.getArrayOrdenado();
+        
+        for(Item i:itens){
+            System.out.println(i.getNome());
+        }
 
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, capacidade);
-        return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao, copiaCapacidadeMochila);
+        return MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao, capacidade);
     }
 
     public static int[] associacaoDeTarefas(int matrizDoProblema[][], int numPessoas, int numTarefas) {
