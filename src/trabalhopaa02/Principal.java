@@ -50,7 +50,7 @@ public class Principal {
         solucao = MochilaFracionaria.resolverMochilaFracionaria(itens, 2);
         System.out.println(MochilaFracionaria.exibirSolucaoMochilaFracionaria(solucao));
 
-        /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************
+        /************************************ SUBSEQUÊNCIA MÁXIMA ****************************************/
 
         int m = 8;	//comprimento de X
         int n = 7;	//comprimento de Y
@@ -59,35 +59,38 @@ public class Principal {
         char Y[] = new char[n];
         
         X[0] = '\0';
-        X[1] = 'A';
-        X[2] = 'A';
+        X[1] = '|';
+        X[2] = '\\';
         X[3] = 'B';
         X[4] = 'B';
-        X[5] = 'A';
-        X[6] = 'A';
-        X[7] = 'A';
+        X[5] = 'C';
+        X[6] = 'C';
+        X[7] = 'C';
         
         Y[0] = '\0';
         Y[1] = 'A';
-        Y[2] = 'A';
-        Y[3] = 'A';
-        Y[4] = 'A';
+        Y[2] = '\\';
+        Y[3] = 'B';
+        Y[4] = 'B';
         Y[5] = 'A';
-        Y[6] = 'A';
+        Y[6] = 'C';
         
         char B[][] = new char[X.length][Y.length];
         int C[][] = new int[X.length][Y.length];
         
-        int i = 0;
-        int j = 0;
-        int armazenaIeJ[] = new int[2]; //armazena os valores de i e j alterados no primeiro método para serem utilizados no segundo método
+//        int i = 0;
+//        int j = 0;
+//        int armazenaIeJ[] = new int[2]; //armazena os valores de i e j alterados no primeiro método para serem utilizados no segundo método
+//        
+        SubsequenciaMaisLonga.constroiTabelas(X, Y, B, C, 0, 0);
         
-        SubsequenciaMaisLonga.constroiTabelas(X, Y, B, C, i, j, armazenaIeJ);
+//        System.out.println(armazenaIeJ[0]);
+//        System.out.println(armazenaIeJ[1]);
 
-        i = armazenaIeJ[0];
-        j = armazenaIeJ[1];
+//        i = armazenaIeJ[0];
+//        j = armazenaIeJ[1];
         
-        SubsequenciaMaisLonga.imprimeSolucao(B, X, i-1, j-1);
+        SubsequenciaMaisLonga.imprimeSolucao(B, X, m-1, n-1);
 
     /************************************** CÓDIGO DE HUFFMAN ******************************************
         
@@ -115,16 +118,28 @@ public class Principal {
         
     /************************************** MOCHILA BOOLEANA ******************************************
         
-        Item item1 = new Item("Item 1", 2, 3, 1); //(nome, peso, valor, quantidade)
-        Item item2 = new Item("Item 2", 3, 6, 1);
-        Item item3 = new Item("Item 3", 6, 9, 1);
+//        Item item1 = new Item("Item 1", 2, 3, 1); //(nome, peso, valor, quantidade)
+//        Item item2 = new Item("Item 2", 3, 6, 1);
+//        Item item3 = new Item("Item 3", 6, 9, 1);
+
+        Item item1 = new Item("Item 1", 3, 25, 1); //(nome, peso, valor, quantidade)
+        Item item2 = new Item("Item 2", 5, 12, 1);
+        Item item3 = new Item("Item 3", 13, 27, 1);
+        Item item4 = new Item("Item 4", 1, 2, 1);
+//        Item item5 = new Item("Item 5", 5, 10, 1);
+        
         
         ArrayList<Item> itens = new ArrayList<>();
         itens.add(item1);
         itens.add(item2);
         itens.add(item3);
+        itens.add(item4);
+//        itens.add(item5);
         
-        MochilaBooleana.resolverMochilaBooleana(itens, 10);
+        System.out.println(itens.size());
+        System.out.println(MochilaBooleana.resolverMochilaBooleana(itens, 10));
+        
+        
         /*********************************************************************************************/
     }
 
