@@ -39,13 +39,6 @@ public class Controlador {
             solucaoEx1.getVetorSolucaoTemporaria()[k] = -1;
         }
         AssociacaoTarefas.resolverAssociacaoDeTarefas(matrizDoProblema, numPessoas, numTarefas, 0, 0, solucaoEx1, true);
-
-        for (int j = 0; j < numTarefas; j++) {
-            System.out.println(solucaoEx1.getVetorSolucaoTemporaria()[j]);
-        }
-        for (int j = 0; j < numTarefas; j++) {
-            System.out.println(solucaoEx1.getVetorSolucao()[j]);
-        }
         
         return solucaoEx1.getVetorSolucao();
     }
