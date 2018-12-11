@@ -58,7 +58,7 @@ public class TelaSubsequenciaMaisLonga extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         table_Num = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Sequências"));

@@ -58,7 +58,7 @@ public class TelaMochilaFracionaria extends javax.swing.JFrame {
         solucaoTextArea = new javax.swing.JTextArea();
         resolverButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mochila Fracionária");
         setResizable(false);
 
