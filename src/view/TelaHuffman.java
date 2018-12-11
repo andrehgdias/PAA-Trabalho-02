@@ -45,6 +45,7 @@ public class TelaHuffman extends javax.swing.JFrame {
         comprimirButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Compressão de Huffman");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Código de Huffman"));
 
