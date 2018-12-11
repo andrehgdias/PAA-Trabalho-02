@@ -13,8 +13,6 @@ import java.util.ArrayList;
  * @author User
  */
 public class MochilaFracionaria {
-
-    private ArrayList<Item> itens;
     
     /*
     Essa função necessita que o ArrayList de itens esteja ordenado de forma decrescente em 
@@ -22,7 +20,7 @@ public class MochilaFracionaria {
     Os parâmetros são um ArrayList contendo todos os itens disponíveis e a capacidade da mochila
     Retorna um ArrayList com os itens da solução, já com a quantidade(fração) certa de cada um 
     */
-    public static ArrayList<Item> resolverMochilaFracionaria(ArrayList<Item> itens, int capacidadeMochila){
+    public static ArrayList<Item> resolverMochilaFracionaria(ArrayList<Item> itens, double capacidadeMochila){
         
         ArrayList<Item> solucao = new ArrayList<>();
         
@@ -47,21 +45,21 @@ public class MochilaFracionaria {
     Recebe como parâmetro o ArrayList da nossa solução
     Retorna uma String com todas essas informações
     */
-    public static String exibirSolucaoMochilaFracionaria(ArrayList<Item> itens){
+    public static String exibirSolucaoMochilaFracionaria(ArrayList<Item> itens, double capacidade){
         String txt = "";
         double valorAgregado = 0;
         DecimalFormat df = new DecimalFormat("0.00");
         
+        txt += "Capacidade da mochila: " + df.format(capacidade) + " kg\n" +
+               "Itens da solução:\n";
+        
         for(int i = 0; i < itens.size(); i++){
-            txt += "Item: " + itens.get(i).getNome() + "\n" +
-                   "Valor por unidade: R$" + itens.get(i).getValor() + "\n" +
-                   "Peso por unidade: " + itens.get(i).getPeso() + " kg\n" +
+            txt += "- " + itens.get(i).getNome() + "\n" +
                    "Quantidade: " + itens.get(i).getQuantidadeFormatada()+ "\n\n";
-            valorAgregado += itens.get(i).getQuantidade() * itens.get(i).getValor();
+                    valorAgregado += itens.get(i).getQuantidade() * itens.get(i).getValor();
         }
         
         txt += "O valor total da mochila é de R$" + df.format(valorAgregado);
-        System.out.println(txt);
 
         return txt;        
     }
